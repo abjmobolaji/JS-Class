@@ -12,29 +12,32 @@
 </head>
 
 <body>
+<!-- Created a welcome message -->
 <h1>Welcome to Johnson's Transact</h1>
 <h2 style="color: antiquewhite;">Click on the button below to start a transaction</h2>
+<!-- Button to activate the transaction -->
 <button onClick="transaction();" style="background: antiquewhite; padding: 10px;">Start Transaction</button>
 
 <script>		
-function performAnother() {
+	
+function performAnother() { //ask the user if he/she wants to perform another transaction
 	input = prompt("Do you want to perform another transaction? Y/N");
 	if(input == ("Y") || input == ("y"))  {
-		transaction();
+		transaction(); //if yes, perform "transaction"
 	}
 }
 	
-function transaction() {
-	user = parseInt(prompt("Enter a number for your transaction: \n 1. Airtime-Self \n 2. Airtime-Others \n 3. Data \n 4. Transfer"));
+function transaction() { 
+	user = parseInt(prompt("Enter a number for your transaction: \n 1. Airtime-Self \n 2. Airtime-Others \n 3. Data \n 4. Transfer")); //stores the transaction the user wants
 	
 	if(user == 1) {
-		amount = parseInt(prompt("Enter Amount: "));
+		amount = parseInt(prompt("Enter Amount: ")); //Converts the input to integer
 		if(isNaN(amount) == false && amount > 0) { //To check of it's a valid amount
-				confirmation = confirm("Are you sure you want to perform this transcation?");
-				if(confirmation == true) { //To get confirmation from user
+				confirmation = confirm("Are you sure you want to perform this transcation?");//To get confirmation from user
+				if(confirmation == true) { //if confirmation is positive, proceed
 				alert("You have purchased N" + amount + " airtime.");
 			}
-			performAnother();
+			performAnother(); //ask the user if he/she wants to perform another transaction
 		}
 		else {
 			alert("Please, Enter a valid amount:");
@@ -50,15 +53,15 @@ function transaction() {
 				if(confirmation == true) { //To get confirmation from user
 					alert("You have sent N" + amount + " to " + number);
 				}
-				performAnother();
+				performAnother(); //ask the user if he/she wants to perform another transaction
 			} else {
 				alert("Please, Enter a valid amount:");
-				transaction();
+				transaction();//sends the user back to restart transaction
 			}
 		}
 		else {
 				alert("Please, Enter a valid phone number:");
-				transaction();
+				transaction();//sends the user back to restart transaction
 			}
 	} 
 	else if(user == 3) {
@@ -80,45 +83,45 @@ function transaction() {
 						alert("You have entered a wrong input.");
 					}
 				}
-				performAnother();
+				performAnother(); //ask the user if he/she wants to perform another transaction
 			}
 			else {
 					alert("Please, Enter a valid input (1-4):");
-					transaction();
+					transaction();//sends the user back to restart transaction
 				}
 		}
 		else {
 				alert("Please, Enter a valid input (1-4):");
-				transaction();
+				transaction();//sends the user back to restart transaction
 			}
 	} 
 	else if(user == 4) {
 		number = prompt("Enter Beneficiary Phone Number: ");
-		if(isNaN(number) == false && number.length >= 10) { { //To check of it's a valid number	
-			amount = parseInt(prompt("Enter Amount: "));
+		if(isNaN(number) == false && number.length >= 10)  { //To check of it's a valid number	
+			amount = parseInt(prompt("Enter Amount: "));//convert input to integer
 			if(isNaN(amount) == false && amount > 0) {	//To check of it's a valid amount
 				pin = parseInt(prompt("Enter Secure Pin: "));
 				confirmation = confirm("Are you sure you want to transfer N" + amount + " to this number? \n" + number);
 				if(confirmation == true) { //To get confirmation from user
 					alert("You have transferred N" + amount + " to " + number + " successfully.");
 				}
-				performAnother();
+				performAnother(); //ask the user if he/she wants to perform another transaction
 					}
 			else {
 					alert("Please, Enter a valid amount:");
-					transaction();
+					transaction();//sends the user back to restart transaction
 				}
 		}
 			else {
 					alert("Please, Enter a valid phone number:");
-					transaction();
+					transaction();//sends the user back to restart transaction
 				}
 	} 
-	else {
+	else { //if user input does not contain 1-4, pop an error 
 		alert("Enter a valid input (Only Numbers 1-4 Allowed)");
-		input = prompt("Do you want to continue? Y/N");
+		input = prompt("Do you want to continue? Y/N"); //ask user if they want to continue transaction
 			if(input == ("Y") || input == ("y")) {
-				transaction();
+				transaction();//sends the user back to restart transaction
 			}
 	}
 }
