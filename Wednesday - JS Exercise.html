@@ -42,8 +42,8 @@ function transaction() {
 		}
 	} 
 	else if(user == 2) {
-		number = parseInt(prompt("Enter Beneficiary Phone Number: "));
-		if(isNaN(number) == false && number > 0) {	//To check of it's a valid number
+		number = prompt("Enter Beneficiary Phone Number: ");
+		if(isNaN(number) == false && number.length >= 10) {	//To check of it's a valid number
 			amount = parseInt(prompt("Enter Amount: "));
 			if(isNaN(amount) == false && amount > 0) {	//To check of it's a valid amount
 				confirmation = confirm("Are you sure you want to send N" + amount + " airtime to this number? \n" + number);
