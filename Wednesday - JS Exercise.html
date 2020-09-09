@@ -93,8 +93,8 @@ function transaction() {
 			}
 	} 
 	else if(user == 4) {
-		number = parseInt(prompt("Select Beneficiary Phone Number: "));
-		if(isNaN(number) == false && number > 0) { //To check of it's a valid number	
+		number = prompt("Enter Beneficiary Phone Number: ");
+		if(isNaN(number) == false && number.length >= 10) { { //To check of it's a valid number	
 			amount = parseInt(prompt("Enter Amount: "));
 			if(isNaN(amount) == false && amount > 0) {	//To check of it's a valid amount
 				pin = parseInt(prompt("Enter Secure Pin: "));
