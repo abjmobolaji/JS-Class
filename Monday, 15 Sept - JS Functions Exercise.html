@@ -7,23 +7,28 @@
 
 <body>
 <script>
+	performAnother(); //function initialize
 	function performAnother() { //Created to collect the input and perform the calculation
 		firstNumber = Number(prompt("Enter a number:")); //First Number
-		while(!firstNumber) { //To validate the first number
-			firstNumber = Number(prompt("Invalid input!!! \n Enter a number:"));
+		if(firstNumber != "") {
+			while(!firstNumber) { //To validate the first number
+				firstNumber = Number(prompt("Invalid input!!! \n Enter a number:"));
+			}
+			secondNumber = Number(prompt("Enter another number")); //Second Number
+			while(!secondNumber) { //To validate the second number
+				secondNumber = Number(prompt("Invalid input!!! \n Enter another number:"));
+			}
+			operation = Number(prompt("Select operation: \n 1. Add \n 2. Subtract \n 3. Multiply \n 4. Divide")); //Operation
+			while(!operation || operation < 1 || operation > 4) { //To validate the operation
+				operation = Number(prompt("Invalid input!!! \n Select operation: \n 1. Add \n 2. Subtract \n 3. Multiply \n 4. Divide"));
+			}
+			performOperation(firstNumber, secondNumber, operation); //performs the calcuation and returns the result
+		} else {
+			alert("Operation Cancelled");
 		}
-		secondNumber = Number(prompt("Enter another number")); //Second Number
-		while(!secondNumber) { //To validate the second number
-			secondNumber = Number(prompt("Invalid input!!! \n Enter another number:"));
-		}
-		operation = Number(prompt("Select operation: \n 1. Add \n 2. Subtract \n 3. Multiply \n 4. Divide")); //Operation
-		while(!operation || operation < 1 || operation > 4) { //To validate the operation
-			operation = Number(prompt("Invalid input!!! \n Select operation: \n 1. Add \n 2. Subtract \n 3. Multiply \n 4. Divide"));
-		}
-		performOperation(firstNumber, secondNumber, operation); //performs the calcuation and returns the result
 	}
 	
-performAnother(); //function initialize
+
 	
 	function performOperation(firstNumber, secondNumber, operation) { //performs the calculation
 		switch (operation) {
