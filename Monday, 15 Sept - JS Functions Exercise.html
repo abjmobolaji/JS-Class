@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Fakunle Mobolaji Johnson - Functions Assignment</title>
+</head>
+
+<body>
+<script>
+	function performAnother() { //Created to collect the input and perform the calculation
+		firstNumber = Number(prompt("Enter a number:")); //First Number
+		while(!firstNumber) { //To validate the first number
+			firstNumber = Number(prompt("Invalid input!!! \n Enter a number:"));
+		}
+		secondNumber = Number(prompt("Enter another number")); //Second Number
+		while(!secondNumber) { //To validate the second number
+			secondNumber = Number(prompt("Invalid input!!! \n Enter another number:"));
+		}
+		operation = Number(prompt("Select operation: \n 1. Add \n 2. Subtract \n 3. Multiply \n 4. Divide")); //Operation
+		while(!operation || operation < 1 || operation > 4) { //To validate the operation
+			operation = Number(prompt("Invalid input!!! \n Select operation: \n 1. Add \n 2. Subtract \n 3. Multiply \n 4. Divide"));
+		}
+		performOperation(firstNumber, secondNumber, operation); //performs the calcuation and returns the result
+	}
+	
+performAnother(); //function initialize
+	
+	function performOperation(firstNumber, secondNumber, operation) { //performs the calculation
+		switch (operation) {
+			case 1: //addition
+				ans = firstNumber + secondNumber;
+				sym = "+";
+				break;
+			case 2: //subtraction
+				ans = firstNumber - secondNumber;
+				sym = "-";
+				break;
+			case 3: //multiplication
+				ans = firstNumber * secondNumber;
+				sym = "x";
+				break;
+			case 4: //division
+				ans = firstNumber / secondNumber;
+				sym = "/";
+				break;
+			default:
+				break;
+		}
+	alert(`${firstNumber} ${sym} ${secondNumber} = ${ans}`); //display the result
+	another = confirm("Do you want to perform another calculation?"); //ask if the user wants to continue or not
+		if(another == true) {
+			performAnother();
+		}
+	}
+	
+////////////////////////////////////////// FAKUNLE MOBOLAJI JOHNSON ///////////////////////////////////////////////	
+	
+	
+</script>
+</body>
+</html>

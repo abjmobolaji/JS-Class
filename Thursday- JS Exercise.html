@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+	body {
+		background: rgba(0,0,0,1.00); width: 700px; margin: auto; padding: 30px; font-family: Constantia;
+		border: solid 1px white; height: 100vh; text-align: center; color: aqua;
+	}	
+</style>
+<title>Mobolaji Johnson Fakunle - JS Class-Work</title>
+</head>
+
+<body>
+<!-- Created a welcome message -->
+<h1>Welcome to Johnson's Transact</h1>
+<h2 style="color: antiquewhite;">Click on the button below to start a transaction</h2>
+<!-- Button to activate the transaction -->
+<button onClick="transaction();" style="background: antiquewhite; padding: 10px;">Start Transaction</button>
+
+<script>		
+	
+function performAnother() { //ask the user if he/she wants to perform another transaction
+	input = prompt("Do you want to perform another transaction? Y/N");
+	if(input == ("Y") || input == ("y"))  {
+		transaction(); //if yes, perform "transaction"
+	}
+}
+	
+function transaction() { 
+	user = parseInt(prompt("Enter a number for your transaction: \n 1. Airtime-Self \n 2. Airtime-Others \n 3. Data \n 4. Transfer")); //stores the transaction the user wants
+	
+	if(user == 1) {
+		amount = parseInt(prompt("Enter Amount: ")); //Converts the input to integer
+		if(isNaN(amount) == false && amount > 0) { //To check of it's a valid amount
+				confirmation = confirm("Are you sure you want to perform this transcation?");//To get confirmation from user
+				if(confirmation == true) { //if confirmation is positive, proceed
+				alert("You have purchased N" + amount + " airtime.");
+			}
+			performAnother(); //ask the user if he/she wants to perform another transaction
+		}
+		else {
+			alert("Please, Enter a valid amount:");
+			transaction();
+		}
+	} 
+	else if(user == 2) {
+		number = prompt("Enter Beneficiary Phone Number: ");
+		if(isNaN(number) == false && number.length >= 10) {	//To check of it's a valid number
+			amount = parseInt(prompt("Enter Amount: "));
+			if(isNaN(amount) == false && amount > 0) {	//To check of it's a valid amount
+				confirmation = confirm("Are you sure you want to send N" + amount + " airtime to this number? \n" + number);
+				if(confirmation == true) { //To get confirmation from user
+					alert("You have sent N" + amount + " to " + number);
+				}
+				performAnother(); //ask the user if he/she wants to perform another transaction
+			} else {
+				alert("Please, Enter a valid amount:");
+				transaction();//sends the user back to restart transaction
+			}
+		}
+		else {
+				alert("Please, Enter a valid phone number:");
+				transaction();//sends the user back to restart transaction
+			}
+	} 
+	else if(user == 3) {
+		network = parseInt(prompt("Select Network: \n 1. MTN \n 2. Airtel \n 3. Glo \n 4. 9Mobile"));
+		if(isNaN(network) == false && network > 0 && network < 5) {	//To check of it's a valid network selected
+			data = parseInt(prompt("Select Amount: \n 1. 100MB \n 2. 200MB \n 3. 500MB \n 4. 1GB"));
+			if(isNaN(data) == false && data > 0 && data < 5) {	//To check of it's a valid data selected
+				confirmation = confirm("Are you sure you want to perform this transcation?");
+				if(confirmation == true) { //To get confirmation from user
+					if(data == 1 ) {
+						alert("You have purchased 100MB successfully");
+					} else if(data == 2 ) {
+						alert("You have purchased 200MB successfully");
+					} else if(data == 3 ) {
+						alert("You have purchased 500MB successfully");
+					} else if(data == 4 ) {
+						alert("You have purchased 1GB successfully");
+					} else {
+						alert("You have entered a wrong input.");
+					}
+				}
+				performAnother(); //ask the user if he/she wants to perform another transaction
+			}
+			else {
+					alert("Please, Enter a valid input (1-4):");
+					transaction();//sends the user back to restart transaction
+				}
+		}
+		else {
+				alert("Please, Enter a valid input (1-4):");
+				transaction();//sends the user back to restart transaction
+			}
+	} 
+	else if(user == 4) {
+		number = prompt("Enter Beneficiary Phone Number: ");
+		if(isNaN(number) == false && number.length >= 10)  { //To check of it's a valid number	
+			amount = parseInt(prompt("Enter Amount: "));//convert input to integer
+			if(isNaN(amount) == false && amount > 0) {	//To check of it's a valid amount
+				pin = parseInt(prompt("Enter Secure Pin: "));
+				confirmation = confirm("Are you sure you want to transfer N" + amount + " to this number? \n" + number);
+				if(confirmation == true) { //To get confirmation from user
+					alert("You have transferred N" + amount + " to " + number + " successfully.");
+				}
+				performAnother(); //ask the user if he/she wants to perform another transaction
+					}
+			else {
+					alert("Please, Enter a valid amount:");
+					transaction();//sends the user back to restart transaction
+				}
+		}
+			else {
+					alert("Please, Enter a valid phone number:");
+					transaction();//sends the user back to restart transaction
+				}
+	} 
+	else { //if user input does not contain 1-4, pop an error 
+		alert("Enter a valid input (Only Numbers 1-4 Allowed)");
+		input = prompt("Do you want to continue? Y/N"); //ask user if they want to continue transaction
+			if(input == ("Y") || input == ("y")) {
+				transaction();//sends the user back to restart transaction
+			}
+	}
+}
+
+</script>
+</body>
+</html>
