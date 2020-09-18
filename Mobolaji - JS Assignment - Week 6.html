@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+	<style>
+		/*table and button styling*/
+		body {
+			width: 70%; margin: auto;
+		}
+		table {
+		  font-family: sans-serif;
+		  border-collapse: collapse;
+		  width: 100%; margin-top: 20px;
+		}
+
+		td, th {
+		  border: 1px solid #dddddd;
+		  text-align: center;
+		  padding: 8px;
+		}
+
+		tr:nth-child(even) {
+		  background-color: #dddddd;
+		}
+		button {
+		  width: 100%; font: 15px bold;
+		  background: #333; color: antiquewhite;
+		  margin: auto; padding: 10px;
+		  border-radius: 5px;
+		  text-align: center;
+		}
+		button:hover {
+		  background: antiquewhite; color: #333;
+		}
+	</style>	
+<title>Mobolaji Johnson -- JS Assignment</title>
+</head>
+
+
+<body>
+<!-- Display the table content-->
+<div id="content"></div> 
+<br>
+<!-- Display Button to add another info-->
+<button onClick="addAnother();">Add Another Info</button>
+
+<!--Javascript Code-->
+<script>
+	//array that contains info about companies
+	company = [
+		{
+			"SN" : "1",
+			"name" : "Tiidelab",
+			"mail" : "hi@Tiidelab.com",
+			"phone" : "090489409494",
+			"location" : "Africa"
+		},
+		{
+			"SN" : "2",
+			"name" : "Google",
+			"mail" : "help@google.com",
+			"phone" : "070484783647",
+			"location" : "World"
+		},
+		{
+			"SN" : "3",
+			"name" : "Dangote",
+			"mail" : "contact@dangote.com",
+			"phone" : "090489409494",
+			"location" : "Africa"
+		},
+		{
+			"SN" : "4",
+			"name" : "Facebook",
+			"mail" : "me@facebook.com",
+			"phone" : "09747475894",
+			"location" : "World"
+		},
+		{
+			"SN" : "5",
+			"name" : "Uber",
+			"mail" : "hello@Uber.com",
+			"phone" : "06464748574",
+			"location" : "World"
+		}
+	]
+	
+	
+	function addAnother() { //adds another info about a company
+		company[company.length] = {
+				"SN" : company.length + 1,
+				"name" : prompt("Enter a name:"),
+				"mail" : prompt("Enter a mail:"),
+				"phone" : prompt("Enter phone:"),
+				"location" : prompt("Enter a Location:")
+			}
+			displayInfo(); //displays the updated info(table)
+	}
+
+	function displayInfo() { //displays the info
+		objectKeys = Object.keys(company[0]); //gets the key values 
+		result = `
+		<table cellpadding="10" align="center">
+		<tr>`;
+		for(i=0; i < objectKeys.length; i++) { //displays the key values as row header
+			result += `<th>${(objectKeys[i]).toUpperCase()}</th>`
+		}
+		result += `
+		</tr>
+		<tbody>
+		`;
+		for(j=0; j < company.length; j++) { //displays the company info
+			result += `<tr>`;
+			result += `<td>${company[j].SN}</td>`;
+			result += `<td>${company[j].name}</td>`;
+			result += `<td>${company[j].mail}</td>`;
+			result += `<td>${company[j].phone}</td>`;
+			result += `<td>${company[j].location}</td>`;
+			result += `</tr>`;
+		}
+		result += `
+		</tbody>
+		</table>
+		`;
+		document.getElementById("content").innerHTML = `${result}`; //displays the table (Companies Info)
+
+	}
+	
+displayInfo(); 
+	
+	
+/////////////////////////////////FAKUNLE MOBOLAJI JOHNSON/////////////////////////////////
+
+	
+	
+</script>
+		
+		
+	</body>
+</html>
