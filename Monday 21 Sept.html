@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+	<style>
+		/*STYLING*/
+		body {
+			width: 80%; margin: auto; line-height: 1.4em;
+			background: #eee; color: antiquewhite;
+			font-family: Lucida Grande, Lucida Sans Unicode, Lucida Sans, DejaVu Sans, Verdana," sans-serif";
+		}
+		.infobar {
+			font-size: 30px; text-align: center;
+			padding: 25px;
+			background: #030431; color: aliceblue;
+		}
+		.fellows {
+			display: grid;
+			grid-template-columns: 100px auto;
+			column-gap: 10px;
+			background: #ccc; color:#030431; 
+			margin: 5px 0; padding: 5px;
+			
+		}
+		.fellowsImg img  {
+			border-radius: 50%;
+			height: 98px;
+			width: 98px;
+		}
+		.fellowsContent {
+			
+		}
+		.red { background: red; }
+		.green { background: green;	}
+		.blue { background: #030431; width: 100%; font: 20px bold; padding: 15px; }
+		button {
+		  margin: auto; padding: 5px;
+		  border-radius: 5px; color: aliceblue;
+		  text-align: center;
+		}
+		button:hover {
+		  background: #fff; color: #030431;
+		}
+	</style>	
+<title>Mobolaji Johnson -- JS Assignment</title>
+</head>
+
+
+<body>
+<!-- Display fellows -->
+<div class="infobar">TIIDELab Fellows</div>
+<div id="content"></div> 
+
+<!-- Display Button to add another fellow-->
+<button onClick="addFellow();" class="blue">Add Fellow</button>
+<br>
+
+<!--Javascript Code-->
+<script>
+	//array that contains info about fellows
+	fellows = [
+		{
+			"img" : "1.png",
+			"fullName" : "Akan Asanga",
+			"mail" : "Akan.asanga@tiidelab.com",
+			"phone" : "09048940949"
+		},
+		{
+			"img" : "2.png",
+			"fullName" : "Jane Andeh",
+			"mail" : "Jane.andeh@Tiidelab.com",
+			"phone" : "07048478364"
+		},
+		{
+			"img" : "3.png",
+			"fullName" : "Ayoade Rasheed",
+			"mail" : "Aisha.rasheed@tiidelab.com",
+			"phone" : "09048978797"
+		},
+		{
+			"img" : "4.png",
+			"fullName" : "Adebiyi Rotimi",
+			"mail" : "Adebiyi.rotimi@tiidelab.com",
+			"phone" : "09747475894",
+			"location" : "World"
+		},
+		{
+			"img" : "5.png",
+			"fullName" : "Opaluwa Aisha",
+			"mail" : "Opaluwa.aisha@tiidelab.com",
+			"phone" : "06464748574"
+		}
+	]
+	
+	
+	function addFellow() { //adds another fellow's info
+		fellows[fellows.length] = {
+			"img" : prompt("Enter picture address:"),
+			"fullName" : prompt("Enter full name:"),
+			"mail" : prompt("Enter mail:"),
+			"phone" : prompt("Enter phone:")
+		}
+			displayInfo(); //displays the updated info
+	}
+	
+	function editFellow(fellowId) { //edit fellow's info
+		con = confirm("Are you sure you want to edit fellow?")
+		if (con == true) {
+			fellows[fellowId] = {
+				"img" : prompt("Enter new picture address:", fellows[fellowId].img),
+				"fullName" : prompt("Enter new full name:", fellows[fellowId].fullName),
+				"mail" : prompt("Enter new mail:", fellows[fellowId].mail),
+				"phone" : prompt("Enter new phone:", fellows[fellowId].phone)
+			}
+			displayInfo(); //displays the updated info
+		} 
+	}
+	
+	function deleteFellow(fellowId) { //delete fellow
+		con = confirm("Are you sure you want to delete fellow?")
+		if (con == true) {
+			fellows.splice(fellowId, 1);
+			displayInfo(); //displays the updated info
+
+		}
+	}
+
+	function displayInfo() { 
+		content = "";
+		//displays the info
+		for(j=0; j < fellows.length; j++) {		
+			//displays the company info
+			content += 
+			`<div class="fellows">
+				<div class="fellowsImg"><img src="${fellows[j].img}"></div>
+				<div class="fellowsContent">
+				<strong>${fellows[j].fullName}</strong><br>
+				${fellows[j].mail}<br>
+				<em>${fellows[j].phone}</em><br>
+				<button onClick="editFellow(${j});" class="green">Edit User</button> &nbsp; <button onClick="deleteFellow(${j});" class="red">Delete User</button>
+			</div>
+		</div>`;
+		}
+		document.getElementById("content").innerHTML = content; //displays the table (Companies Info)
+
+	}
+	
+displayInfo(); 
+	
+	
+/////////////////////////////////FAKUNLE MOBOLAJI JOHNSON/////////////////////////////////
+
+	
+	
+</script>
+		
+		
+	</body>
+</html>
